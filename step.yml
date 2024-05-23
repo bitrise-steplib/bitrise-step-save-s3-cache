@@ -135,7 +135,7 @@ inputs:
       - The build is running on an EC2 instance. In this case, the steps expects the instance to have access to the bucket.
     is_required: true
 
-- aws_region:
+- aws_region: us-east-1
   opts:
     category: AWS
     title: AWS Region
