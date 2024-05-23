@@ -134,7 +134,6 @@ inputs:
       - CACHE_AWS_ACCESS_KEY_ID, CACHE_AWS_SECRET_ACCESS_KEY secrets to be setup for the workflow
       - The build is running on an EC2 instance. In this case, the steps expects the instance to have access to the bucket.
     is_required: true
-    is_expeand: true
 
 - aws_region:
   opts:
@@ -144,41 +143,40 @@ inputs:
     description: |-
       AWS Region is only considered when a bucket name is defined.
     value_options:
-    - us-east-1
-    - us-east-2
-    - us-west-1
-    - us-west-2
-    - ca-central-1
-    - ca-west-1
-    - eu-north-1
-    - eu-west-3
-    - eu-west-2
-    - eu-west-1
-    - eu-central-1
-    - eu-central-2
-    - eu-south-1
-    - eu-south-2
-    - ap-south-1
-    - ap-south-2
-    - ap-northeast-1
-    - ap-northeast-2
-    - ap-northeast-3
-    - ap-southeast-1
-    - ap-southeast-2
-    - ap-southeast-3
-    - ap-southeast-4
-    - ap-east-1
-    - sa-east-1
-    - cn-north-1
-    - cn-northwest-1
-    - us-gov-east-1
-    - us-gov-west-1
-    - me-south-1
-    - me-central-1
-    - af-south-1
-    - il-central-1
+    - "us-east-1"
+    - "us-east-2"
+    - "us-west-1"
+    - "us-west-2"
+    - "ca-central-1"
+    - "ca-west-1"
+    - "eu-north-1"
+    - "eu-west-3"
+    - "eu-west-2"
+    - "eu-west-1"
+    - "eu-central-1"
+    - "eu-central-2"
+    - "eu-south-1"
+    - "eu-south-2"
+    - "ap-south-1"
+    - "ap-south-2"
+    - "ap-northeast-1"
+    - "ap-northeast-2"
+    - "ap-northeast-3"
+    - "ap-southeast-1"
+    - "ap-southeast-2"
+    - "ap-southeast-3"
+    - "ap-southeast-4"
+    - "ap-east-1"
+    - "sa-east-1"
+    - "cn-north-1"
+    - "cn-northwest-1"
+    - "us-gov-east-1"
+    - "us-gov-west-1"
+    - "me-south-1"
+    - "me-central-1"
+    - "af-south-1"
+    - "il-central-1"
     is_required: true
-    is_expeand: true
 
 - aws_access_key_id: $CACHE_AWS_ACCESS_KEY_ID
   opts:
@@ -190,7 +188,6 @@ inputs:
       in the bucket specified bellow `s3:ListObjects`, `s3:PutObject`, `s3:GetObjectAttributes` and `s3:GetObject`.
 
       If the build instance has S3 access via IAM Instance role, this variable can be left empty.
-    is_expand: true
     is_required: false
     is_sensitive: true
     summary: The AWS_ACCESS_KEY_ID with access to the bucket.
@@ -206,7 +203,6 @@ inputs:
       in the bucket specified bellow `s3:ListObjects`, `s3:PutObject`, `s3:GetObjectAttributes` and `s3:GetObject`.
 
       If the build instance has S3 access via IAM Instance role, this variable can be left empty.
-    is_expand: true
     is_required: false
     is_sensitive: true
     summary: The AWS_SECRET_ACCESS_KEY with access to the bucket.
