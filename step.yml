@@ -57,7 +57,7 @@ source_code_url: https://github.com/bitrise-steplib/bitrise-step-save-s3-cache
 support_url: https://github.com/bitrise-steplib/bitrise-step-save-s3-cache/issues
 
 type_tags:
-  - utility
+- utility
 
 run_if: .IsCI
 is_skippable: true
@@ -68,9 +68,9 @@ toolkit:
 
 deps:
   brew:
-    - name: zstd
+  - name: zstd
   apt_get:
-    - name: zstd
+  - name: zstd
 
 inputs:
   - key:
@@ -101,8 +101,8 @@ inputs:
       summary: Enable logging additional information for troubleshooting
       is_required: true
       value_options:
-        - "true"
-        - "false"
+      - "true"
+      - "false"
 
   - is_key_unique: "false"
     opts:
@@ -117,13 +117,13 @@ inputs:
 
         Note: the Step can still skip uploading a cache when this input is `false`, it just needs to create the archive first to compute its checksum (which takes time).
       value_options:
-        - "true"
-        - "false"
+      - "true"
+      - "false"
 
   - aws_bucket:
       opts:
         category: AWS
-        title: "AWS Bucket name"
+        title: AWS Bucket name
         summary: Provide an AWS bucket name to be used as cache backend.
         description: |-
           Bring your own bucket: exercise full control over the cache location.
@@ -139,44 +139,44 @@ inputs:
   - aws_region:
       opts:
         category: AWS
-        title: "AWS Region"
+        title: AWS Region
         summary: Region of the S3 bucket.
         description: |-
           AWS Region is only considered when a bucket name is defined.
         value_options:
-          - us-east-1
-          - us-east-2
-          - us-west-1
-          - us-west-2
-          - ca-central-1
-          - ca-west-1
-          - eu-north-1
-          - eu-west-3
-          - eu-west-2
-          - eu-west-1
-          - eu-central-1
-          - eu-central-2
-          - eu-south-1
-          - eu-south-2
-          - ap-south-1
-          - ap-south-2
-          - ap-northeast-1
-          - ap-northeast-2
-          - ap-northeast-3
-          - ap-southeast-1
-          - ap-southeast-2
-          - ap-southeast-3
-          - ap-southeast-4
-          - ap-east-1
-          - sa-east-1
-          - cn-north-1
-          - cn-northwest-1
-          - us-gov-east-1
-          - us-gov-west-1
-          - me-south-1
-          - me-central-1
-          - af-south-1
-          - il-central-1
+        - us-east-1
+        - us-east-2
+        - us-west-1
+        - us-west-2
+        - ca-central-1
+        - ca-west-1
+        - eu-north-1
+        - eu-west-3
+        - eu-west-2
+        - eu-west-1
+        - eu-central-1
+        - eu-central-2
+        - eu-south-1
+        - eu-south-2
+        - ap-south-1
+        - ap-south-2
+        - ap-northeast-1
+        - ap-northeast-2
+        - ap-northeast-3
+        - ap-southeast-1
+        - ap-southeast-2
+        - ap-southeast-3
+        - ap-southeast-4
+        - ap-east-1
+        - sa-east-1
+        - cn-north-1
+        - cn-northwest-1
+        - us-gov-east-1
+        - us-gov-west-1
+        - me-south-1
+        - me-central-1
+        - af-south-1
+        - il-central-1
         is_required: true
         is_expeand: true
 
