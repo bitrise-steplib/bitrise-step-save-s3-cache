@@ -50,7 +50,6 @@ type UploadService struct {
 	SecretAccessKey string
 }
 
-// Upload .
 func (u UploadService) Upload(ctx context.Context, params network.UploadParams, logger log.Logger) error {
 	validatedKey, err := validateKey(params.CacheKey, logger)
 	if err != nil {
@@ -58,7 +57,7 @@ func (u UploadService) Upload(ctx context.Context, params network.UploadParams, 
 	}
 
 	if u.Bucket == "" {
-		return fmt.Errorf("Bucket must not be empty")
+		return fmt.Errorf("Bucket name must not be empty")
 	}
 
 	if params.ArchivePath == "" {
@@ -77,7 +76,7 @@ func (u UploadService) Upload(ctx context.Context, params network.UploadParams, 
 		logger,
 	)
 	if err != nil {
-		return fmt.Errorf("load aws credentials: %w", err)
+		return fmt.Errorf("load AWS credentials: %w", err)
 	}
 
 	u.Client = s3.NewFromConfig(*cfg)
@@ -86,7 +85,7 @@ func (u UploadService) Upload(ctx context.Context, params network.UploadParams, 
 
 // If the object for cache key & checksum exists in bucket -> extend expiration
 // If the object for cache key exists in bucket -> upload -> overwrites existing object & expiration
-// If the object is not yes present in bucket -> upload
+// If the object is not yet present in bucket -> upload
 func (u UploadService) uploadWithS3Client(
 	ctx context.Context,
 	cacheKey string,

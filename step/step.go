@@ -16,7 +16,6 @@ type Input struct {
 	Verbose            bool            `env:"verbose,required"`
 	Key                string          `env:"key,required"`
 	Paths              string          `env:"paths,required"`
-	IsKeyUnique        bool            `env:"is_key_unique"`
 	AWSBucket          string          `env:"aws_bucket"`
 	AWSRegion          string          `env:"aws_region"`
 	AWSAccessKeyID     stepconf.Secret `env:"aws_access_key_id"`
@@ -69,10 +68,10 @@ func (step SaveCacheStep) Run() error {
 		step.pathModifier,
 		step.pathChecker,
 		uploader).Save(cache.SaveCacheInput{
-		StepId:      "save-cache",
+		StepId:      "save-s3-cache",
 		Verbose:     input.Verbose,
 		Key:         input.Key,
 		Paths:       strings.Split(input.Paths, "\n"),
-		IsKeyUnique: input.IsKeyUnique,
+		IsKeyUnique: false,
 	})
 }
