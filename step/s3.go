@@ -57,7 +57,7 @@ func (u UploadService) Upload(ctx context.Context, params network.UploadParams, 
 	}
 
 	if u.Bucket == "" {
-		return fmt.Errorf("Bucket name must not be empty")
+		return fmt.Errorf("bucket name must not be empty")
 	}
 
 	if params.ArchivePath == "" {
@@ -139,7 +139,7 @@ func (u UploadService) findChecksumWithRetry(ctx context.Context, cacheKey strin
 			}
 		}
 
-		if response.Metadata != nil {
+		if response != nil && response.Metadata != nil {
 			if sha256, ok := response.Metadata[checksumKey]; ok {
 				checksum = sha256
 			}
