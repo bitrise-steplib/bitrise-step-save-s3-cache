@@ -74,13 +74,13 @@ Check out [Workflow Recipes](https://github.com/bitrise-io/workflow-recipes#-key
 
 ```yaml
 steps:
-- restore-cache@1:
+- restore-s3-cache@1:
     inputs:
     - key: node-modules-{{ checksum "package-lock.json" }}
 
 # Build steps
 
-- save-cache@1:
+- save-s3-cache@1:
     run_if: ".IsCI | and (not .IsPR)" # Condition that is false in PR builds
     inputs:
     - key: node-modules-{{ checksum "package-lock.json" }}
@@ -93,7 +93,7 @@ Cache is not guaranteed to work across different Bitrise Stacks (different OS or
 
 ```yaml
 steps:
-- save-cache@1:
+- save-s3-cache@1:
     inputs:
     - key: '{{ .OS }}-{{ .Arch }}-npm-cache-{{ checksum "package-lock.json" }}'
     - path: node_modules
@@ -105,12 +105,12 @@ You can add multiple instances of this Step to a Workflow:
 
 ```yaml
 steps:
-- save-cache@1:
+- save-s3-cache@1:
     title: Save NPM cache
     inputs:
     - paths: node_modules
     - key: node-modules-{{ checksum "package-lock.json" }}
-- save-cache@1:
+- save-s3-cache@1:
     title: Save Python cache
     inputs:
     - paths: venv/
